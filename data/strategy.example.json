@@ -1,0 +1,25 @@
+{
+  "current_positioning": "Your positioning statement — who you help and how",
+  "content_themes": [
+    "Theme 1 — a specific problem you solve with a result",
+    "Theme 2 — a specific problem you solve with a result",
+    "Theme 3 — a specific problem you solve with a result",
+    "Theme 4 — a specific problem you solve with a result",
+    "Theme 5 — a specific problem you solve with a result",
+    "Theme 6 — a specific problem you solve with a result"
+  ],
+  "target_roles": [
+    "Role 1",
+    "Role 2",
+    "Role 3"
+  ],
+  "posting_frequency": {
+    "linkedin": "3x/week",
+    "devto": "1x/week",
+    "hn": "monthly (first Wednesday)",
+    "reddit_forhire": "monthly (first Wednesday)"
+  },
+  "last_updated": "2025-01-01",
+  "cycle_count": 0,
+  "performance_notes": "Initial run — no data yet."
+}

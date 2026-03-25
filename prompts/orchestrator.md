@@ -1,0 +1,1 @@
+ Equipment malfunctions occurring frequently can result in operational disruptions, requiring manual intervention by agents. To minimize such interruptions, an effective and dependable equipment maintenance strategy is necessary.

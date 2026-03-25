@@ -1,0 +1,27 @@
+# Environment
+.env
+
+# Personal data
+data/profile.json
+data/strategy.json
+data/targets.json
+
+# Generated output (personal content)
+output/
+
+# Growth logs (personal)
+memory/
+
+# Claude Code local settings
+.claude/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# macOS
+.DS_Store

@@ -1,0 +1,31 @@
+{
+  "name": "Your Name",
+  "title": "Your Title | Your Role",
+  "tagline": "Your one-liner value proposition",
+  "years_experience": 10,
+  "key_achievements": [
+    "Achievement 1 with quantified result",
+    "Achievement 2 with quantified result",
+    "Achievement 3 with quantified result"
+  ],
+  "core_skills": [
+    "Skill 1",
+    "Skill 2",
+    "Skill 3"
+  ],
+  "services": [
+    {
+      "name": "Service Name",
+      "rate": "$X/hour or $X–Y fixed",
+      "desc": "Short description of what you deliver"
+    }
+  ],
+  "ideal_clients": [
+    "Client type 1",
+    "Client type 2"
+  ],
+  "location": "Your City (Remote — Your Region)",
+  "languages": ["English"],
+  "linkedin": "linkedin.com/in/yourhandle",
+  "target_platforms": ["LinkedIn", "HackerNews", "Dev.to", "Reddit r/forhire"]
+}
