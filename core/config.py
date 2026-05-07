@@ -12,7 +12,7 @@ REDDIT_PASSWORD = os.getenv("REDDIT_PASSWORD", "")
 # LLM backend: "api" (Claude) or "ollama" (local)
 # Override at runtime via --backend flag or LLM_BACKEND env var
 LLM_BACKEND = os.getenv("LLM_BACKEND", "api")   # "api" | "ollama"
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "mistral:7b")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:8b")
 
 OUTPUT_DIR = "output"
 DATA_DIR = "data"

@@ -14,7 +14,7 @@ Available agents: linkedin, article, hn, reddit, outreach, opportunity, optimize
 
 Backend env vars:
     LLM_BACKEND=api|ollama   (default: api)
-    OLLAMA_MODEL=mistral:7b  (default, only used when backend=ollama)
+    OLLAMA_MODEL=qwen3:8b   (default, only used when backend=ollama)
 """
 import sys
 import os

@@ -3,8 +3,6 @@ from core.ollama_runner import run_agent
 from prompts.loader import load_prompt
 import os
 
-MODEL = "mistral:7b"
-
 PROMPT_DIR = "prompts"
 
 def optimize():
@@ -17,7 +15,7 @@ def optimize():
                 content = f.read()
 
             prompt = base_prompt + "\nPrompt:\n" + content
-            improved = run_agent(prompt, MODEL)
+            improved = run_agent(prompt)
 
             with open(path, "w") as f:
                 f.write(improved)
