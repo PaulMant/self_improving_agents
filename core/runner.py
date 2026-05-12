@@ -7,7 +7,13 @@ Set at startup via --backend CLI flag or LLM_BACKEND env var.
 import os
 
 
-def run_agent(prompt: str, model: str = None, max_tokens: int = 4096, thinking: bool = False) -> str:
+def run_agent(
+    prompt: str,
+    model: str = None,
+    max_tokens: int = 4096,
+    thinking: bool = False,
+    host: str = None,
+) -> str:
     """
     Run a prompt through the configured LLM backend.
 
@@ -16,6 +22,8 @@ def run_agent(prompt: str, model: str = None, max_tokens: int = 4096, thinking: 
         model:      Override the default model for this call.
         max_tokens: Maximum tokens to generate (Claude only; Ollama uses OLLAMA_MODEL default).
         thinking:   Enable adaptive thinking (Claude Opus only).
+        host:       Ollama only — URL of a remote Ollama server (e.g. http://remote:11434).
+                    Ignored when backend is Claude API.
 
     Returns:
         The model's text response.
@@ -24,7 +32,7 @@ def run_agent(prompt: str, model: str = None, max_tokens: int = 4096, thinking: 
     from core.config import LLM_BACKEND
 
     if LLM_BACKEND == "ollama":
-        return _run_ollama(prompt, model)
+        return _run_ollama(prompt, model, host=host)
     else:
         return _run_claude(prompt, model, max_tokens, thinking)
 
@@ -70,7 +78,7 @@ def _run_claude(prompt: str, model: str, max_tokens: int, thinking: bool) -> str
 
 # --- Ollama backend ---
 
-def _run_ollama(prompt: str, model: str) -> str:
+def _run_ollama(prompt: str, model: str, host: str = None) -> str:
     import time
     import ollama as _ollama
     from core.config import OLLAMA_MODEL
@@ -78,9 +86,11 @@ def _run_ollama(prompt: str, model: str) -> str:
     _model = model or OLLAMA_MODEL
     MAX_PROMPT = 12000  # local models can handle more context than the old 8K limit
 
+    client = _ollama.Client(host=host) if host else _ollama.Client()
+
     for attempt in range(3):
         try:
-            response = _ollama.chat(
+            response = client.chat(
                 model=_model,
                 messages=[{"role": "user", "content": prompt[:MAX_PROMPT]}],
                 options={"num_predict": 2048},

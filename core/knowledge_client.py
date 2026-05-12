@@ -191,6 +191,32 @@ def get_published_slugs(platform: str) -> list[str]:
     return [p.stem for p in sorted(published_dir.glob("*.md"))]
 
 
+def get_published_topics(platform: str) -> list[str]:
+    """
+    Human-readable topic descriptions for already-published posts.
+    Returns the post title (from frontmatter) when available, falls back to
+    the first non-empty body line, then to the file stem.
+    """
+    published_dir = _lab_root() / "published" / platform
+    if not published_dir.is_dir():
+        return []
+
+    topics: list[str] = []
+    for p in sorted(published_dir.glob("*.md")):
+        text = _read(p)
+        if not text:
+            topics.append(p.stem)
+            continue
+        meta, body = _parse_frontmatter(text)
+        title = meta.get("title") or meta.get("Title")
+        if not title:
+            first_line = next((l.strip() for l in body.splitlines() if l.strip()), "")
+            title = first_line[:120] if first_line else p.stem
+        topics.append(title)
+
+    return topics
+
+
 def mark_draft_published(draft_path: str) -> None:
     """
     Set status: published in a draft file's frontmatter.

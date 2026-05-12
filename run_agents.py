@@ -10,7 +10,7 @@ Usage:
     python run_agents.py --agent linkedin        # Run one agent (claude API)
     python run_agents.py --agent linkedin --backend ollama  # Run one agent (local Ollama)
 
-Available agents: linkedin, article, hn, reddit, outreach, opportunity, optimizer
+Available agents: linkedin, linkedin_pipeline, article, hn, reddit, outreach, opportunity, optimizer
 
 Backend env vars:
     LLM_BACKEND=api|ollama   (default: api)
@@ -57,11 +57,12 @@ else:
 
 def run_single(name: str):
     from agents import (
-        linkedin_agent, article_agent, hn_agent, reddit_agent,
+        linkedin_agent, linkedin_pipeline, article_agent, hn_agent, reddit_agent,
         outreach_agent, opportunity_agent, optimizer_agent,
     )
     agent_map = {
         "linkedin": linkedin_agent.run,
+        "linkedin_pipeline": linkedin_pipeline.run,
         "article": article_agent.run,
         "hn": hn_agent.run,
         "reddit": reddit_agent.run,
